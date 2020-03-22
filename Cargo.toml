@@ -1,0 +1,15 @@
+[package]
+name = "hyper-demo"
+version = "0.1.0"
+authors = ["hongyuanyang"]
+edition = "2018"
+
+
+[[bin]]
+name = "hyper_demo"
+path = "src/main.rs"
+
+[dependencies]
+hyper = "0.13.4"
+futures-util = "*"
+tokio = { version = "0.2", features = ["full"] }
