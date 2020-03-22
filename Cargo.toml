@@ -13,3 +13,4 @@ path = "src/main.rs"
 hyper = "0.13.4"
 futures-util = "*"
 tokio = { version = "0.2", features = ["full"] }
+reqwest = "0.10.4"

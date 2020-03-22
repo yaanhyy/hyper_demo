@@ -14,7 +14,22 @@ async fn echo(req: Request<Body>) -> Result<Response<Body>, hyper::Error> {
         ))),
 
         // Simply echo the body back to the client.
-        (&Method::POST, "/echo") => Ok(Response::new(req.into_body())),
+        (&Method::POST, "/echo") => {
+            let res = reqwest::get("https://hyper.rs").await;
+            let body = match res {
+                Ok(res) => {
+                    println!("Status: {}", res.status());
+
+                    let body = res.text().await;
+                    match body {
+                        Ok(body) => body,
+                        Err(e) => e.to_string(),
+                    }
+                },
+                Err(e) => e.to_string(),
+            };
+            Ok(Response::new(Body::from(body))
+        )},
 
         // Convert to uppercase before sending back to client using a stream.
         (&Method::POST, "/echo/uppercase") => {
