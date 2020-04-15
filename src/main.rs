@@ -73,7 +73,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
     let server = Server::bind(&addr).serve(service);
 
     println!("Listening on http://{}", addr);
-
+    let i = 0;
     server.await?;
 
     Ok(())
