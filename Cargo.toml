@@ -10,6 +10,8 @@ name = "hyper_demo"
 path = "src/main.rs"
 
 [dependencies]
+futures = "0.3"
+async-std = '1'
 hyper = "0.13.4"
 futures-util = "*"
 tokio = { version = "0.2", features = ["full"] }
