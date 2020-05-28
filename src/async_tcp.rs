@@ -3,13 +3,14 @@ use std::time::Duration;
 use futures::stream::StreamExt;
 use futures_util::io::AsyncReadExt;
 
-//use async_std::stream::stream::StreamExt;
-async fn tcp_server() {
-    let addr = "127.0.0.1:6142";
-    let listener = TcpListener::bind(addr).await.unwrap();
+
+fn tcp_server() {
+
 
     let server = {
         async move {
+            let addr = "127.0.0.1:6142";
+            let listener = TcpListener::bind(addr).await.unwrap();
             let mut incoming = listener.incoming();
             while let Some(conn) = incoming.next().await {
                 match conn {
@@ -33,10 +34,14 @@ async fn tcp_server() {
         }
     };
     println!("Server running on localhost:6142");
-    server.await;
+    //server.await
+    async_std::task::block_on(server);
 }
 
 #[test]
 fn tcp_server_test() {
     tcp_server();
+    loop {
+
+    }
 }
