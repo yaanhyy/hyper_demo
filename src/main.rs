@@ -6,6 +6,8 @@ use hyper::{Body, Method, Request, Response, Server, StatusCode};
 mod async_tcp;
 use std::path::PathBuf;
 use std::env;
+
+mod future_wake;
 /// This is our service handler. It receives a Request, routes on its
 /// path, and returns a Future of a Response.
 async fn echo(req: Request<Body>) -> Result<Response<Body>, hyper::Error> {
