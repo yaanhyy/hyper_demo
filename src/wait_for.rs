@@ -17,6 +17,7 @@ use {
     },
 
 };
+//use hyper::server::accept::poll_fn;
 
 
 #[derive(Debug)]
@@ -63,5 +64,7 @@ impl Future for WaitForIt {
 #[test]
 fn wait_for_test() {
     let wfi_1 = WaitForIt::new("I'm done:".to_owned(), Duration::seconds(1));
+    //poll_fn(wfi_1.poll());
+
     async_std::task::block_on(async {let res =  wfi_1.await; println!("out:{}",res)});
 }

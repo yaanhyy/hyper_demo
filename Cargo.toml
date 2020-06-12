@@ -17,3 +17,4 @@ futures-util = "*"
 tokio = { version = "0.2", features = ["full"] }
 reqwest = "0.10.4"
 chrono = "0.4.6"
+futures-timer = "3.0.2"

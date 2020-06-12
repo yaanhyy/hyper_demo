@@ -8,6 +8,7 @@ use std::path::PathBuf;
 use std::env;
 mod wait_for;
 mod future_wake;
+mod slot_stream;
 /// This is our service handler. It receives a Request, routes on its
 /// path, and returns a Future of a Response.
 async fn echo(req: Request<Body>) -> Result<Response<Body>, hyper::Error> {
